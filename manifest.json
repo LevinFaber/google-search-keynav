@@ -1,0 +1,13 @@
+{
+  "name": "Google Search Keynav",
+  "version": "1.0",
+  "description": "Navigate searchresults using tab.",
+  "permissions": ["tabs", "*://*.google.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.google.com/*"],
+      "js": ["main.js"]
+    }
+  ],
+  "manifest_version": 2
+}
