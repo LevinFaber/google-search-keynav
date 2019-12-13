@@ -3,10 +3,13 @@ let current = -1;
 
 const setActive = (results) => (index, direction) => {
   const prev = results[index];
+  const nextIndex = index + direction;
+  if (nextIndex < 0 || nextIndex > results.length - 1) {
+    return index;
+  }
   if (prev) {
     prev.style.cssText = "";
   }
-  const nextIndex = index + direction;
   const currentElement = results[nextIndex];
   if (currentElement) {
     currentElement.querySelector("a").focus();
@@ -18,6 +21,7 @@ const setActive = (results) => (index, direction) => {
 
 const setActiveForResults = setActive(results);
 window.addEventListener("keydown", event => {
+  if (document.activeElement.tagName === "INPUT") return;
   switch (event.code) {
     case "Tab":
     case "KeyJ":
